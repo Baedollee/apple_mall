@@ -4,41 +4,50 @@ import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import bg from './img/apple-brands.svg';
 import { useState } from 'react';
 import data from './data.js';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import Detail from './page/Detail';
 
 function App() {
   let [shoes] = useState(data);
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/detail" element={<div>상세페이지</div>} />
-        <Route path="/about" />
-      </Routes>
-
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Baedolle</Navbar.Brand>
+          <Link to="/">홈</Link>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Mac</Nav.Link>
+            <Link to="/detail">상세페이지</Link>
             <Nav.Link href="#features">iPhone</Nav.Link>
             <Nav.Link href="#pricing">iPad</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-      <div
-        className="main-bg"
-        style={{ backgroundImage: 'url(' + bg + ')' }}></div>
 
-      <div class="container text-center">
-        <div class="row">
-          {shoes.map((item, index) => {
-            return (
-              <Card shoes={item.title} price={item.price} i={index}></Card>
-            );
-          })}
-        </div>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div
+                className="main-bg"
+                style={{ backgroundImage: 'url(' + bg + ')' }}></div>
+              <div class="container text-center">
+                <div class="row">
+                  {shoes.map((item, index) => {
+                    return (
+                      <Card
+                        shoes={item.title}
+                        price={item.price}
+                        i={index}></Card>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route path="/detail" element={<Detail />} />
+      </Routes>
     </div>
   );
 }
@@ -56,4 +65,5 @@ const Card = ({ shoes, price, i }) => {
     </div>
   );
 };
+
 export default App;
