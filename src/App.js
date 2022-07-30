@@ -26,40 +26,16 @@ function App() {
 
       <div class="container text-center">
         <div class="row">
-          <div class="col">
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              alt="profile"
-              width="80%"
-            />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].price}</p>
-          </div>
-          <div class="col">
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              alt="profile"
-              width="80%"
-            />
-            <h4>{shoes[1].title}</h4>
-            <p>{shoes[1].price}</p>
-          </div>
-          <div class="col">
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              alt="profile"
-              width="80%"
-            />
-            <h4>{shoes[2].title}</h4>
-            <p>{shoes[2].price}</p>
-          </div>
+          <Card shoes={shoes[0]}></Card>
+          <Card shoes={shoes[1]}></Card>
+          <Card shoes={shoes[2]}></Card>
         </div>
       </div>
     </div>
   );
 }
 
-const Card = () => {
+const Card = ({ shoes }) => {
   return (
     <div class="col">
       <img
@@ -67,8 +43,8 @@ const Card = () => {
         alt="profile"
         width="80%"
       />
-      <h4>{shoes[0].title}</h4>
-      <p>{shoes[0].price}</p>
+      <h4>{shoes.title}</h4>
+      <p>{shoes.price}</p>
     </div>
   );
 };
