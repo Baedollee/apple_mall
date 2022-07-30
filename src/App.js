@@ -4,12 +4,18 @@ import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import bg from './img/apple-brands.svg';
 import { useState } from 'react';
 import data from './data.js';
+import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   let [shoes] = useState(data);
 
   return (
     <div className="App">
+      <Routes>
+        <Route path="/detail" element={<div>상세페이지</div>} />
+        <Route path="/about" />
+      </Routes>
+
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Baedolle</Navbar.Brand>
@@ -26,25 +32,27 @@ function App() {
 
       <div class="container text-center">
         <div class="row">
-          <Card shoes={shoes[0]}></Card>
-          <Card shoes={shoes[1]}></Card>
-          <Card shoes={shoes[2]}></Card>
+          {shoes.map((item, index) => {
+            return (
+              <Card shoes={item.title} price={item.price} i={index}></Card>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-const Card = ({ shoes }) => {
+const Card = ({ shoes, price, i }) => {
   return (
     <div class="col">
       <img
-        src="https://codingapple1.github.io/shop/shoes1.jpg"
+        src={'https://codingapple1.github.io/shop/shoes' + (i + 1) + '.jpg'}
         alt="profile"
         width="80%"
       />
-      <h4>{shoes.title}</h4>
-      <p>{shoes.price}</p>
+      <h4>{shoes}</h4>
+      <p>{price}</p>
     </div>
   );
 };
