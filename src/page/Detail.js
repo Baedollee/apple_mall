@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Detail = () => {
   return (
     <div className="container">
@@ -6,6 +8,7 @@ const Detail = () => {
           <img
             src="https://codingapple1.github.io/shop/shoes1.jpg"
             width="100%"
+            alt="profile"
           />
         </div>
         <div className="col-md-6">
