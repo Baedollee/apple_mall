@@ -1,10 +1,13 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
 import Detail from './page/Detail';
 import Header from './Header';
 import Home from './page/Home';
+import data from './data';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 
 function App() {
+  let [shoes] = useState(data);
+
   return (
     <div className="App">
       <Header />
