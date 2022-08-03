@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../components/Button';
 import Card from '../components/Card';
 import data from '../data';
 import bg from '../img/apple-brands.svg';
 
 const Home = () => {
   const [shoes, setShoes] = useState([]);
-  const [loading, setLoading] = useState(0);
 
   useEffect(() => {
     setShoes(data);
@@ -31,19 +29,14 @@ const Home = () => {
             return (
               <Card
                 key={`${item.id}_${index}`}
-                shoes={item.title}
+                title={item.title}
+                id={item.id}
                 price={item.price}
                 i={index}
               />
             );
           })}
         </div>
-        <Button
-          shoes={shoes}
-          setShoes={setShoes}
-          loading={loading}
-          setLoading={setLoading}
-        />
       </div>
     </>
   );

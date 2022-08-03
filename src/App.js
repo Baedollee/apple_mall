@@ -15,18 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/detail/:id"
-          element={shoes.map((item) => {
-            return (
-              <Detail
-                title={shoes[item.id].title}
-                content={shoes[item.id].content}
-                price={shoes[item.id].price}
-              />
-            );
-          })}
-        />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="*" element={<div>없는페이지요!</div>}></Route>
       </Routes>
     </div>
